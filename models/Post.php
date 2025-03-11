@@ -17,7 +17,11 @@ class Post
     public function getPosts()
     {
         try {
-            $sql = "SELECT * FROM posts ORDER BY id DESC";
+            $sql = "SELECT p.id, p.titulo, p.descricao, p.data_publicacao, a.nome AS autor, c.nome AS categoria 
+            FROM posts p
+            INNER JOIN autor a ON p.autor_id = a.id
+            INNER JOIN categoria c ON p.categoria_id = c.id
+            ORDER BY p.id DESC";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -43,6 +47,46 @@ class Post
         } catch (PDOException $e) {
             echo "Erro: " . $e->getMessage();
             return false;
+        }
+    }
+
+    // Deletar um post
+    public function deletarPost($id)
+    {
+
+        try {
+            $sql = "DELETE FROM posts WHERE id = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(":id", $id);
+            return $stmt->execute();
+        } catch (PDOException $erro) {
+            echo "Erro ao deletar o post! " . $erro->getMessage();
+        }
+    }
+
+    // Buscar um posts pelo id
+    public function buscarPost($id)
+    {
+        try {
+
+            $sql = "SELECT 
+            p.id, 
+            p.titulo, 
+            p.descricao, 
+            p.data_publicacao, 
+            a.nome AS autor, 
+            c.nome AS categoria 
+        FROM posts p
+        INNER JOIN autor a ON p.autor_id = a.id
+        INNER JOIN categoria c ON p.categoria_id = c.id
+        WHERE p.id = :id";
+
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(":id", $id);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $erro) {
+            echo "Erro ao buscar os dados do post " . $erro->getMessage();
         }
     }
 }

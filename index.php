@@ -13,26 +13,32 @@ $allPosts = $posts->getAllPosts();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contents/css/style.css">
     <title>Blog</title>
 </head>
 
 <body>
 
-    <h1>Blog</h1>
+    <div class="menu-topo"">
+        <nav class=" container">
+        <h1>Blog</h1>
+        </nav>
+    </div>
 
-    <ul>
+    <section class="container">
 
         <?php foreach ($allPosts as $post) : ?>
-
-            <li>Titulo: <?= $post['titulo'] ?></li>
-            <li>Descrição: <?= $post['descricao'] ?> </li>
-            <li>Categoria: <?= $post['categoria'] ?></li>
-            <li>Autor: <?= $post['autor'] ?></li>
-            <li>Data Publicação: <?= $post['data_publicacao'] ?></li>
-            <hr>
+            <div class="posts">
+                <h2><?= $post['titulo'] ?></h2>
+                <p><?= substr($post['descricao'], 0, 200) . (strlen($post['descricao']) > 200 ? '...' : '') ?></p>
+                <div style="margin: 20px 0;"><a href="post_details.php?post=<?= $post['id'] ?>">Leia mais</a></div>
+                <small>Categoria: <?= $post['categoria'] ?></small>
+                <small>Autor: <?= $post['autor'] ?></small>
+                <small>Data Publicação: <?= $post['data_publicacao'] ?></small>
+            </div>
         <?php endforeach; ?>
 
-    </ul>
+    </section>
 
     <div>
         <a href="criar_post.php">Criar novo post.</a>

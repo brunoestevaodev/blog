@@ -23,4 +23,16 @@ class PostController
     {
         return $this->postModel->addPost($titulo, $descricao, $categoria_id, $autor_id);
     }
+
+    // Deletar Post
+    public function deletarPost($id)
+    {
+        return $this->postModel->deletarPost($id);
+    }
+
+    // Buscar post pelo id
+    public function buscarPost($id)
+    {
+        return $this->postModel->buscarPost($id);
+    }
 }

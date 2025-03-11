@@ -2,6 +2,7 @@
 
 include_once __DIR__ . "/controllers/PostController.php";
 
+// Verificando se é uma requisição GET
 $postController = new PostController();
 $posts = $postController->getAllPosts();
 
