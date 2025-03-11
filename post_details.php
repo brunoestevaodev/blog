@@ -26,7 +26,6 @@ $post = $postModel->buscarPost($id);
     }
 
     .text-titulo {
-        width: 60%;
         font-size: 2.5em !important;
     }
 </style>
@@ -42,13 +41,12 @@ $post = $postModel->buscarPost($id);
     <section class="container-post">
         <div class="posts">
             <h2 class="text-titulo"><?= $post['titulo'] ?></h2>
-            <p><?= nl2br($post['descricao']) ?></p>
+            <p style="font-weight:normal;font-size:1.1em;text-align:justify;line-height:32px;color:#444;letter-spacing: 0.01em;"><?= nl2br($post['descricao']) ?></p>
             <small>Categoria: <?= $post['categoria'] ?></small>
             <small>Autor: <?= $post['autor'] ?></small>
             <small>Data Publicação: <?= $post['data_publicacao'] ?></small>
         </div>
     </section>
-
 
 </body>
 
