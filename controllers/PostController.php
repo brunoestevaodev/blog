@@ -39,13 +39,8 @@ class PostController
     public function editarPost($id_post, $titulo, $descricao, $categoria_id, $autor_id)
     {
         try {
-            $resultado = $this->postModel->editarPost($id_post, $titulo, $descricao, $categoria_id, $autor_id);
 
-            if ($resultado) {
-                return "Post editado com sucesso!";
-            } else {
-                return "Falha ao editar o post.";
-            }
+            $resultado = $this->postModel->editarPost($id_post, $titulo, $descricao, $categoria_id, $autor_id);
         } catch (Exception $erro) {
             return "Erro ao editar o post: " . $erro->getMessage();
         }
