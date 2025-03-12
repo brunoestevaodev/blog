@@ -89,4 +89,21 @@ class Post
             echo "Erro ao buscar os dados do post " . $erro->getMessage();
         }
     }
+
+    // Editar post
+    public function editarPost($id_post, $titulo, $descricao, $categoriaId, $autorId)
+    {
+        try {
+            $sql = "UPDATE posts SET titulo = :titulo, descricao = :descricao, categoria_id = :categoria_id, autor_id = :autor_id WHERE id = :id_post";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(':titulo', $titulo);
+            $stmt->bindValue(':descricao', $descricao);
+            $stmt->bindValue(':categoria_id', $categoriaId);
+            $stmt->bindValue(':autor_id', $autorId);
+            $stmt->bindValue(':id_post', $id_post);
+            return $stmt->execute();
+        } catch (PDOException $erro) {
+            echo "Erro ao atualizar o post! " . $erro->getMessage();
+        }
+    }
 }

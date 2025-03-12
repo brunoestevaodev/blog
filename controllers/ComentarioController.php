@@ -15,6 +15,11 @@ class ComentarioController
     // Adicionar comentário
     public function adicionarComentario($id_post, $nome, $comentario)
     {
+        if ($id_post == "" || $nome == "" || $comentario == "") {
+            echo "Por favor, preencha todos os campos!";
+            exit;
+        }
+
         return $this->modelComentario->adicionarComentario($id_post, $nome, $comentario);
     }
 

@@ -126,12 +126,12 @@ $exibirComentario = $modelComentario->exibirComentarioPost($id);
 
             <div>
                 <label class="label-control" for="nome">Nome</label>
-                <input class="form-control" type="text" id="nome" name="nome">
+                <input class="form-control" type="text" id="nome" name="nome" required>
             </div>
 
             <div>
                 <label class="label-control" for="comentario">Comentário</label>
-                <textarea class="form-control" name="comentario" id="comentario" rows="6"></textarea>
+                <textarea class="form-control" name="comentario" id="comentario" rows="6" required></textarea>
             </div>
 
             <div>
