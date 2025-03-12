@@ -28,13 +28,16 @@ $allPosts = $posts->getAllPosts();
     <section class="container">
 
         <?php foreach ($allPosts as $post) : ?>
-            <div class="posts">
-                <h2><?= $post['titulo'] ?></h2>
-                <p><?= substr($post['descricao'], 0, 200) . (strlen($post['descricao']) > 200 ? '...' : '') ?></p>
+            <div class="posts" style="padding:40px 0;">
+                <small style="background-color:red;color:#fff; padding: 6px;"><?= $post['categoria'] ?></small>
+                <h2 style="margin-top:10px;"><?= $post['titulo'] ?></h2>
+                <p><?= substr($post['descricao'], 0, 600) . (strlen($post['descricao']) > 200 ? '...' : '') ?></p>
                 <div style="margin: 20px 0;"><a href="post_details.php?post=<?= $post['id'] ?>">Leia mais</a></div>
-                <small>Categoria: <?= $post['categoria'] ?></small>
-                <small>Autor: <?= $post['autor'] ?></small>
-                <small>Data Publicação: <?= $post['data_publicacao'] ?></small>
+                <div style="text-align: right; margin-bottom:10px;">
+                    <small>Autor: <?= $post['autor'] ?></small>
+                    <small>Data Publicação: <?= $post['data_publicacao'] ?></small>
+                </div>
+                <hr>
             </div>
         <?php endforeach; ?>
 
