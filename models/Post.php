@@ -17,7 +17,7 @@ class Post
     public function getPosts()
     {
         try {
-            $sql = "SELECT p.id, p.titulo, p.descricao, p.data_publicacao, a.nome AS autor, c.nome AS categoria 
+            $sql = "SELECT p.id, p.titulo, p.descricao, p.data_publicacao, a.nome AS autor, c.nome AS categoria, c.color 
             FROM posts p
             INNER JOIN autor a ON p.autor_id = a.id
             INNER JOIN categoria c ON p.categoria_id = c.id
